@@ -3,6 +3,7 @@
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
@@ -19,7 +20,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'super-admin',
                 'email' => 'sadmin'.rand().'@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'status' => STATUS['active'],
+                'status' => Config::get('constants.user_status.active'),
                 'password' => Hash::make('afraz123'),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -28,7 +29,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Student 1',
                 'email' => 'student1'.rand().'@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'status' => STATUS['active'],
+                'status' => Config::get('constants.user_status.active'),
                 'password' => Hash::make('afraz123'),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -37,7 +38,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Student 2',
                 'email' => 'student2'.rand().'@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'status' => STATUS['active'],
+                'status' => Config::get('constants.user_status.active'),
                 'password' => Hash::make('afraz123'),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -46,7 +47,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Teacher 1',
                 'email' => 'teacher1'.rand().'@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'status' => STATUS['active'],
+                'status' => Config::get('constants.user_status.active'),
                 'password' => Hash::make('afraz123'),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -55,7 +56,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Teacher 2',
                 'email' => 'teacher2'.rand().'@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'status' => STATUS['active'],
+                'status' => Config::get('constants.user_status.active'),
                 'password' => Hash::make('afraz123'),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -64,7 +65,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'admin',
                 'email' => 'admin'.rand().'@gmail.com',
                 'email_verified_at' => Carbon::now(),
-                'status' => STATUS['active'],
+                'status' => Config::get('constants.user_status.active'),
                 'password' => Hash::make('afraz123'),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

@@ -1,7 +1,11 @@
-<?php 
+<?php
 
-const STATUS = [
-    'inactive' => '0',
-    'active' => '1',
-    'blocked' => '2',
+
+return [
+    'user_status' => [
+        'inactive' => '0',
+        'active' => '1',
+        'blocked' => '2',
+    ]
+
 ];

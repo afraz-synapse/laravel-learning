@@ -5,12 +5,21 @@
         margin-top:32px;
     }
 </style>
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="{{asset('DataTables/datatables.min.css')}}"/>
 @endpush
 @section('title', 'User - Index')
 
 @section('content')
 
+@include('includes.breadcrumb',['data' => [
+    'module_name' => 'User',
+    'title' => 'User Listing',
+    'url' => route('user.index'),
+    'page' => 'User Listing'
+    ]])
+
+<section class="content">
+    <div class="container-fluid">
 <div class="card">
     <div class="card-header">
       <h3 class="card-title">User's Records</h3>
@@ -21,40 +30,51 @@
         <table class="table table-bordered" id="users-table" >
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Created At</th>
-                    <th>Updated At</th>
+                    <th>status</th>
+                    <th>role</th>
+                    <th>actions</th>
                 </tr>
             </thead>
         </table>
 
     </div>
 </div>
+</div>
+</section>
     
 @endsection
 
 @push('scripts')
 
      <!-- DataTables -->
-     <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" defer></script>
+     
+    <script type="text/javascript" src="{{asset('DataTables/datatables.min.js')}}"></script>
 
         <script>
             $(function() {
                 
             let oTable =  $('#users-table').DataTable({
-                "serverSide": true,
+                processing: true,
+                serverSide: true,
                 ajax: {
                     url: '{!! route('user.datatable') !!}',
                     type: 'GET'
-                }
+                },
+                columns: [
+                { data: 'id' },
+                { data: 'name' },
+                { data: 'email' },
+                { data: 'status' },
+                { data: 'role' },
+                {data: "id" , render : function ( data, type, row, meta ) {
+                return '<a href="user/'+data+'/edit"><i class="fas fa-edit"></i></a>';
+            }},
+         ]
             });
 
-
-            $('#user-filter-form').on('submit', function(e) {
-                oTable.draw();
-                e.preventDefault();
-            });
 
         });
 
