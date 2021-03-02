@@ -19,7 +19,11 @@ Route::get('/sample', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/', 'HomeController@index')->middleware('verified')->name('home');
 
-Route::get('/profile/{id}/edit', 'UserProfileUpdateController@edit')->middleware('verified')->name('profile.edit');
-Route::put('/profile/{id}', 'UserProfileUpdateController@update')->middleware('verified')->name('profile.update');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/profile/{id}/edit', 'UserProfileUpdateController@edit')->name('profile.edit');
+    Route::put('/profile/{id}', 'UserProfileUpdateController@update')->name('profile.update');
+    Route::get('user/datatable','UserController@getDataTable')->name('user.datatable');
+    Route::resource('user','UserController');
+});

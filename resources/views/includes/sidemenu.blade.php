@@ -27,10 +27,19 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         
           <li class="nav-item">
-            <a href="{{route('home')}}" class="nav-link active">
+            <a href="{{route('home')}}" class="nav-link {{Route::currentRouteName() == "home" ? "active" : ""}}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('user.index')}}" class="nav-link {{Route::currentRouteName() == "user.index" ? "active" : ""}}">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Users
               </p>
             </a>
           </li>
